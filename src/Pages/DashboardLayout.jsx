@@ -9,9 +9,11 @@ import {
   BarChart,
   MessageSquare,
   Settings,
+  HelpCircle,
 } from "lucide-react";
 import OverviewCard from "../Components/OverviewCard";
 import Dashboard from "../Page/Dashboard";
+import { Input } from "postcss";
 
 const DashboardLayout = () => {
   const [data] = useState([
@@ -188,11 +190,23 @@ const DashboardLayout = () => {
 
       {/* Phần còn lại của nội dung (Header, Overview, Content) */}
       <div className="col-span-3 space-y-4">
-        {/* Header */}
-        <div className="p-4 border-b h-15 border-gray-300">
-          <h1 className="text-2xl font-bold">Header</h1>
-        </div>
+        <div className="bg-white shadow-md p-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <span className="text-xl font-bold text-pink-500 mr-4">
+              Dashboard
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-64 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <HelpCircle className="h-5 w-5 text-gray-500" />
 
+            <div className="h-8 w-8 rounded-full bg-purple-500"></div>
+          </div>
+        </div>
         {/* Overview */}
         <div className="p-3 col-span-3">
           <h1 className="text-2xl font-bold mb-4">Overview</h1>
@@ -223,10 +237,8 @@ const DashboardLayout = () => {
             />
           </div>
         </div>
-
         {/* Dòng kẻ ngang */}
         <div className="border-b border-gray-300 col-span-3"></div>
-
         {/* Content */}
         {renderPage()}
       </div>
