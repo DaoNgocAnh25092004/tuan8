@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { ShoppingCart, DollarSign, UserPlus } from "lucide-react";
+import {
+  ShoppingCart,
+  DollarSign,
+  UserPlus,
+  LayoutDashboard,
+  Folder,
+  Users,
+  BarChart,
+  MessageSquare,
+  Settings,
+} from "lucide-react";
 import OverviewCard from "../Components/OverviewCard";
 import Dashboard from "../Page/Dashboard";
 
@@ -55,12 +65,125 @@ const DashboardLayout = () => {
     },
   ]);
 
+  const [activePage, setActivePage] = useState("Dashboard");
+  const renderPage = () => {
+    switch (activePage) {
+      case "Dashboard":
+        return (
+          <>
+            <Dashboard data={data} />
+          </>
+        );
+      case "Projects":
+        return (
+          <div className="p-4 h-full col-span-3">
+            <h1>Projects</h1>
+          </div>
+        );
+      case "Teams":
+        return (
+          <div className="p-4 h-full col-span-3">
+            <h1>Teams</h1>
+          </div>
+        );
+      case "Analytics":
+        return (
+          <div className="p-4 h-full col-span-3">
+            <h1>Analytics</h1>
+          </div>
+        );
+      case "Messages":
+        return (
+          <div className="p-4 h-full col-span-3">
+            <h1>Messages</h1>
+          </div>
+        );
+      case "Integrations":
+        return (
+          <div className="p-4 h-full col-span-3">
+            <h1>Integrations</h1>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="grid grid-cols-4 h-screen">
       {/* Navbar */}
       <div className="p-4 border-r border-gray-300">
-        <h1 className="text-xl font-bold">Navbar</h1>
-        {/* Thêm các mục menu ở đây */}
+        <div className="mb-8">
+          <h1 className="text-xl font-bold text-black">Logo</h1>
+        </div>
+        <ul className="space-y-2">
+          <li
+            className={`flex items-center gap-2 p-2 rounded-md cursor-pointer ${
+              activePage === "Dashboard"
+                ? "bg-pink-500 text-white"
+                : "hover:bg-gray-100 text-gray-700"
+            }`}
+            onClick={() => setActivePage("Dashboard")}
+          >
+            <LayoutDashboard className="w-5 h-5" />
+            <span>Dashboard</span>
+          </li>
+          <li
+            className={`flex items-center gap-2 p-2 rounded-md cursor-pointer ${
+              activePage === "Projects"
+                ? "bg-pink-500 text-white"
+                : "hover:bg-gray-100 text-gray-700"
+            }`}
+            onClick={() => setActivePage("Projects")}
+          >
+            <Folder className="w-5 h-5" />
+            <span>Projects</span>
+          </li>
+          <li
+            className={`flex items-center gap-2 p-2 rounded-md cursor-pointer ${
+              activePage === "Teams"
+                ? "bg-pink-500 text-white"
+                : "hover:bg-gray-100 text-gray-700"
+            }`}
+            onClick={() => setActivePage("Teams")}
+          >
+            <Users className="w-5 h-5" />
+            <span>Teams</span>
+          </li>
+          <li
+            className={`flex items-center gap-2 p-2 rounded-md cursor-pointer ${
+              activePage === "Analytics"
+                ? "bg-pink-500 text-white"
+                : "hover:bg-gray-100 text-gray-700"
+            }`}
+            onClick={() => setActivePage("Analytics")}
+          >
+            <BarChart className="w-5 h-5" />
+            <span>Analytics</span>
+          </li>
+          <li
+            className={`flex items-center gap-2 p-2 rounded-md cursor-pointer ${
+              activePage === "Messages"
+                ? "bg-pink-500 text-white"
+                : "hover:bg-gray-100 text-gray-700"
+            }`}
+            onClick={() => setActivePage("Messages")}
+          >
+            <MessageSquare className="w-5 h-5" />
+            <span>Messages</span>
+          </li>
+          <li
+            className={`flex items-center gap-2 p-2 rounded-md cursor-pointer ${
+              activePage === "Integrations"
+                ? "bg-pink-500 text-white"
+                : "hover:bg-gray-100 text-gray-700"
+            }`}
+            onClick={() => setActivePage("Integrations")}
+          >
+            <Settings className="w-5 h-5" />
+            <span>Integrations</span>
+          </li>
+        </ul>
       </div>
 
       {/* Phần còn lại của nội dung (Header, Overview, Content) */}
@@ -105,9 +228,7 @@ const DashboardLayout = () => {
         <div className="border-b border-gray-300 col-span-3"></div>
 
         {/* Content */}
-        <div className="p-4 h-full col-span-3">
-          <Dashboard data={data} />
-        </div>
+        {renderPage()}
       </div>
     </div>
   );
