@@ -1,8 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { ShoppingCart, DollarSign, UserPlus } from "lucide-react";
 import OverviewCard from "../Components/OverviewCard";
+import Dashboard from "../Page/Dashboard";
 
 const DashboardLayout = () => {
+  const [data] = useState([
+    {
+      customerName: "Elizabeth Lee",
+      company: "Avatar Systems",
+      orderValue: "$359",
+      orderDate: "10/07/2023",
+      status: "New",
+      avatar: "https://randomuser.me/api/portraits/women/1.jpg",
+    },
+    {
+      customerName: "Carlos Garcia",
+      company: "SmoozeShift",
+      orderValue: "$747",
+      orderDate: "24/07/2023",
+      status: "New",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    {
+      customerName: "Elizabeth Bailey",
+      company: "Prime Time Telecom",
+      orderValue: "$564",
+      orderDate: "08/08/2023",
+      status: "In-progress",
+      avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+    },
+    {
+      customerName: "Ryan Brown",
+      company: "OmniTech Corporation",
+      orderValue: "$541",
+      orderDate: "31/08/2023",
+      status: "In-progress",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    {
+      customerName: "Ryan Young",
+      company: "DataStream Inc.",
+      orderValue: "$769",
+      orderDate: "01/05/2023",
+      status: "Completed",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    },
+    {
+      customerName: "Hailey Adams",
+      company: "FlowRush",
+      orderValue: "$922",
+      orderDate: "10/06/2023",
+      status: "Completed",
+      avatar: "https://randomuser.me/api/portraits/women/3.jpg",
+    },
+  ]);
+
   return (
     <div className="grid grid-cols-4 h-screen">
       {/* Navbar */}
@@ -19,7 +71,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Overview */}
-        <div className="p-7 col-span-3">
+        <div className="p-3 col-span-3">
           <h1 className="text-2xl font-bold mb-4">Overview</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <OverviewCard
@@ -54,8 +106,7 @@ const DashboardLayout = () => {
 
         {/* Content */}
         <div className="p-4 h-full col-span-3">
-          <h2 className="text-lg font-semibold">Content</h2>
-          {/* Thêm nội dung chính ở đây */}
+          <Dashboard data={data} />
         </div>
       </div>
     </div>
