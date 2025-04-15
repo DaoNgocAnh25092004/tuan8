@@ -1,5 +1,5 @@
 import React from "react";
-import { PlayCircle, Bookmark } from "lucide-react";
+import { PlayCircle, Bookmark, Search } from "lucide-react";
 
 const RecipeCard = ({ title, time, imageUrl, hasVideo }) => {
   return (
@@ -69,10 +69,126 @@ const RecipeCard2 = ({
   );
 };
 
+const Header = () => {
+  return (
+    <header className="bg-white py-4 shadow-md">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center">
+          <span className="text-xl font-bold text-pink-500 mr-2">Chefify</span>
+          {/* */}
+        </div>
+
+        {/* Search Bar */}
+        <div className="flex-grow px-4 max-w-md">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+            <input
+              type="text"
+              placeholder="What would you like to cook?"
+              className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+            />
+          </div>
+        </div>
+
+        {/* Navigation Links */}
+        <nav className="hidden md:flex items-center space-x-6">
+          <a
+            href="#"
+            className="text-gray-700 hover:text-pink-500 transition-colors"
+          >
+            What to cook
+          </a>
+          <a
+            href="#"
+            className="text-gray-700 hover:text-pink-500 transition-colors"
+          >
+            Recipes
+          </a>
+          <a
+            href="#"
+            className="text-gray-700 hover:text-pink-500 transition-colors"
+          >
+            Ingredients
+          </a>
+          <a
+            href="#"
+            className="text-gray-700 hover:text-pink-500 transition-colors"
+          >
+            Occasions
+          </a>
+          <a
+            href="#"
+            className="text-gray-700 hover:text-pink-500 transition-colors"
+          >
+            About Us
+          </a>
+        </nav>
+
+        {/* Login/Subscribe */}
+        <div className="flex items-center space-x-4">
+          <a
+            href="#"
+            className="text-gray-700 hover:text-pink-500 transition-colors"
+          >
+            Login
+          </a>
+          <button className="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+const RecipeOfDay = () => {
+  return (
+    <div className="bg-gray-100 py-8">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+        {/* Image Section */}
+        <div className="md:w-100% h-200px">
+          <img
+            src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG0dby1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Salad Caprese"
+            className="rounded-lg shadow-lg w-full object-cover h-full"
+          />
+        </div>
+
+        {/* Text Section */}
+        <div className="md:w-1/3 text-left absolute left-20 top-1/2 transform -translate-y-1/2 bg-white p-6 rounded-lg shadow-md">
+          <span className="absolute top-4 left-4 text-xs font-semibold text-yellow-500 bg-yellow-100 px-2 py-1 rounded">
+            Recipe of the day
+          </span>
+          <h2 className="text-2xl font-bold text-gray-800 mt-6 mb-2">
+            Salad Caprese
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Classic Italian Salad Caprese: ripe tomatoes, fresh mozzarella,
+            herbs, olive oil, and balsamic vinegar create a refreshing dish for
+            lunch or appetizer.
+          </p>
+          <div className="flex items-center mt-6 mb-4">
+            {/* */}
+            <span className="text-sm font-medium text-gray-700 ml-2">
+              Salad Caprese
+            </span>
+          </div>
+          <button className="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors">
+            View now →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Bai2 = () => {
   return (
-    <div className="bg-gray-100 min-h-screen py-12">
-      <div className="container mx-auto px-4">
+    <div className="bg-gray-100 min-h-screen ">
+      <Header />
+      <RecipeOfDay />
+      <div className="container mx-auto px-4 mt-6">
         <h1 className="text-3xl font-bold text-pink-500 text-center mb-8">
           This Summer Recipes
         </h1>
