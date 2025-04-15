@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight, Edit, X, Save } from "lucide-react";
-import { cn } from "../lib/cn"; // Đường dẫn đến file cn.js
+import { ChevronLeft, ChevronRight, Edit, X, Save, Plus } from "lucide-react";
+import { cn } from "../lib/cn"; // Giả sử bạn có một file utils.ts với hàm cn
 
 // Định nghĩa các components đơn giản để thay thế các import từ "@/components/ui"
 const Button = ({ variant, size, className, onClick, children }) => {
@@ -108,11 +108,20 @@ const DialogTrigger = ({ className, children, onClick }) => {
 
 // ===============================
 
-const Dashboard = ({ data }) => {
+const Dashboard = ({ data, onAddUser }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(5);
   const [editingData, setEditingData] = useState(null);
   const [open, setOpen] = useState(false);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [newUserData, setNewUserData] = useState({
+    customerName: "",
+    company: "",
+    orderValue: "",
+    orderDate: "",
+    status: "",
+    avatar: "", // Có thể cần một giá trị mặc định hoặc để trống
+  });
 
   const records =
     data && Array.isArray(data)
@@ -158,9 +167,33 @@ const Dashboard = ({ data }) => {
     setEditingData({ ...editingData, [name]: value });
   };
 
+  const handleAddUserInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewUserData({ ...newUserData, [name]: value });
+  };
+
+  const handleAddUser = () => {
+    onAddUser(newUserData);
+    setNewUserData({
+      customerName: "",
+      company: "",
+      orderValue: "",
+      orderDate: "",
+      status: "",
+      avatar: "",
+    });
+    setIsAddDialogOpen(false);
+  };
+
   return (
     <>
       <div className="bg-white rounded-lg shadow-md overflow-x-auto">
+        <div className="flex justify-between items-center p-4 border-b border-gray-200">
+          <h2 className="text-lg font-semibold">Dashboard</h2>
+          <Button onClick={() => setIsAddDialogOpen(true)}>
+            <Plus className="mr-2 h-4 w-4" /> Add User
+          </Button>
+        </div>
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
@@ -363,6 +396,104 @@ const Dashboard = ({ data }) => {
             </Button>
             <Button type="submit" onClick={handleSave}>
               <Save className="mr-2 h-4 w-4" /> Lưu
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Add User Dialog */}
+      <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+        <DialogContent className="sm:max-w-[600px]">
+          <DialogHeader>
+            <DialogTitle>Add New User</DialogTitle>
+            <DialogDescription>
+              Enter the user's details below.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="newCustomerName" className="text-right">
+                Customer Name
+              </Label>
+              <Input
+                id="newCustomerName"
+                name="customerName"
+                value={newUserData.customerName}
+                onChange={handleAddUserInputChange}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="newCompany" className="text-right">
+                Company
+              </Label>
+              <Input
+                id="newCompany"
+                name="company"
+                value={newUserData.company}
+                onChange={handleAddUserInputChange}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="newOrderValue" className="text-right">
+                Order Value
+              </Label>
+              <Input
+                id="newOrderValue"
+                name="orderValue"
+                value={newUserData.orderValue}
+                onChange={handleAddUserInputChange}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="newOrderDate" className="text-right">
+                Order Date
+              </Label>
+              <Input
+                id="newOrderDate"
+                name="orderDate"
+                value={newUserData.orderDate}
+                onChange={handleAddUserInputChange}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="newStatus" className="text-right">
+                Status
+              </Label>
+              <Input
+                id="newStatus"
+                name="status"
+                value={newUserData.status}
+                onChange={handleAddUserInputChange}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="newAvatar" className="text-right">
+                Avatar
+              </Label>
+              <Input
+                id="newAvatar"
+                name="avatar"
+                value={newUserData.avatar}
+                onChange={handleAddUserInputChange}
+                className="col-span-3"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setIsAddDialogOpen(false)}
+              className="mr-2"
+            >
+              <X className="mr-2 h-4 w-4" /> Hủy
+            </Button>
+            <Button type="submit" onClick={handleAddUser}>
+              <Save className="mr-2 h-4 w-4" /> Thêm
             </Button>
           </DialogFooter>
         </DialogContent>
