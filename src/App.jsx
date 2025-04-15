@@ -1,10 +1,12 @@
 import "./App.css";
-import DashboardLayout from "./Pages/DashboardLayout";
+import Bai2 from "./Layout/Bai2";
+import DashboardLayout from "./Layout/DashboardLayout";
 
 function App() {
   return (
     <div className=" p-0 m-0 box-S">
-      <DashboardLayout />
+      {/* <DashboardLayout /> */}
+      <Bai2 />
     </div>
   );
 }
