@@ -286,6 +286,97 @@ const Bai2 = () => {
           />
         </div>
       </div>
+
+      <footer className="bg-gray-800 text-white py-6 mt-5">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          {/* About Us Section */}
+          <div className="text-sm">
+            <h4 className="font-semibold text-lg mb-2">About Us</h4>
+            <p className="mb-4">
+              Welcome to our website, a wonderful place to explore and learn how
+              to cook like a pro.
+            </p>
+            <div className="flex items-center">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-gray-700 text-white px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-pink-500 border-transparent"
+              />
+              <button className="bg-pink-500 text-white px-6 py-2 rounded-r-md hover:bg-pink-600 transition-colors">
+                Send
+              </button>
+            </div>
+            <div className="mt-4 flex items-center">
+              <span className="text-xl font-bold mr-2">Chefify</span>
+              <span className="text-xs text-gray-400">
+                © 2023 Chefify Company. All rights reserved.
+              </span>
+            </div>
+
+            <div className="mt-2 text-xs text-gray-400">
+              <a href="#" className="hover:text-pink-500 mr-2">
+                Terms of Service
+              </a>
+              <a href="#" className="hover:text-pink-500 mr-2">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-pink-500">
+                Send Us Feedback
+              </a>
+            </div>
+          </div>
+
+          {/* Learn More Section */}
+          <div className="text-sm">
+            <h4 className="font-semibold text-lg mb-2">Learn More</h4>
+            <ul>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Our Cooks</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">See Our Features</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">FAQ</a>
+              </li>
+            </ul>
+            <h4 className="font-semibold text-lg mt-6 mb-2">Shop</h4>
+            <ul>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Gift Subscription</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Recipes Section */}
+          <div className="text-sm">
+            <h4 className="font-semibold text-lg mb-2">Recipes</h4>
+            <ul>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">What to Cook This Week</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Pasta</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Dinner</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Healthy</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Vegetarian</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Vegan</a>
+              </li>
+              <li className="mb-2 hover:text-pink-500 transition-colors">
+                <a href="#">Christmas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
